@@ -1,0 +1,76 @@
+graph TD
+    %% Define Node Styles
+    classDef gray fill:#f4f4f4,stroke:#aaa,stroke-width:2px
+    classDef blue fill:#e6f0ff,stroke:#b0c4de,stroke-width:2px
+    classDef benefits fill:#f9f9f9,stroke:#ccc,stroke-dasharray: 3 3,stroke-width:2px
+
+    %% Define Top-Level Nodes
+    GenAI_Enabler["GenAI as an Enabler for Engineering Teams"]
+    VertexAI[("Vertex AI Platform<br>(Foundation Models, Tools, APIs)")]
+
+    %% Subgraph: Key Tools
+    subgraph Key Google GenAI Tools
+        GeminiCLI["Gemini CLI<br>(Terminal Agent)"]
+        GeminiCodeAssist["Gemini Code Assist<br>(IDE & Cloud Console Integration)"]
+    end
+
+    %% Subgraph: Lifecycle Domains
+    subgraph Engineering Lifecycle Domains
+        IncidentResponse["Incident Response<br>(Analysis, Root Cause)"]
+        Modernization["Modernization<br>(Legacy Transformation)"]
+        Documentation["Documentation<br>(Creation, Summarization)"]
+        Testing["Testing<br>(Test Gen, Debugging)"]
+        Coding["Coding<br>(Generation, Completion, Refactoring)"]
+    end
+
+    %% Subgraph: Key Benefits
+    subgraph Key Benefits
+        Benefit1["Developer Productivity Boost"]
+        Benefit2["Faster Development Cycles"]
+        Benefit3["Enhanced Operational Efficiency"]
+        Benefit4["Reduced Technical Debt"]
+    end
+
+    %% Apply Styles
+    class GenAI_Enabler gray
+    class IncidentResponse,Modernization,Documentation,Testing,Coding gray
+    class GeminiCLI,GeminiCodeAssist blue
+    class Benefit1,Benefit2,Benefit3,Benefit4 benefits
+
+    %% Define Connections
+    
+    %% Vertex AI Connections
+    VertexAI --> GenAI_Enabler
+    VertexAI -. "Utilities" .-> GeminiCLI
+    VertexAI -. "Powers" .-> GeminiCodeAssist
+    VertexAI -- "Foundation for<br>Migration Tools" --> Modernization
+    VertexAI -- "Custom AI Models for<br>Monitoring & Alerting" --> IncidentResponse
+    VertexAI -.-> Benefit1
+    VertexAI -.-> Benefit2
+    VertexAI -.-> Benefit3
+    VertexAI -.-> Benefit4
+
+    %% GenAI Enabler Connections
+    GenAI_Enabler --> IncidentResponse
+    GenAI_Enabler --> Modernization
+    GenAI_Enabler --> Documentation
+    GenAI_Enabler --> Testing
+    GenAI_Enabler --> Coding
+
+    %% Gemini CLI Connections
+    GeminiCLI -- "Draft documentation" --> Documentation
+    GeminiCLI -- "Generate test scripts" --> Testing
+    GeminiCLI -- "Terminal-based code tasks" --> Coding
+
+    %% Gemini Code Assist Connections
+    GeminiCodeAssist -- "Analyze logs & troubleshoot" --> IncidentResponse
+    GeminiCodeAssist -- "Provide insights in console" --> IncidentResponse
+    GeminiCodeAssist -- "Automate code refactoring" --> Modernization
+    GeminiCodeAssist -- "Generate docs from code" --> Documentation
+    GeminiCodeAssist -- "Automate test scripts" --> Testing
+    GeminiCodeAssist -- "Generate test scaffolds" --> Testing
+    GeminiCodeAssist -- "In-IDE code assistance" --> Coding
+    GeminiCodeAssist -.-> Benefit1
+    GeminiCodeAssist -.-> Benefit2
+    GeminiCodeAssist -.-> Benefit3
+    GeminiCodeAssist -.-> Benefit4

@@ -1,76 +1,70 @@
 graph TD
-    %% Define Node Styles
-    classDef gray fill:#f4f4f4,stroke:#aaa,stroke-width:2px
-    classDef blue fill:#e6f0ff,stroke:#b0c4de,stroke-width:2px
-    classDef benefits fill:#f9f9f9,stroke:#ccc,stroke-dasharray: 3 3,stroke-width:2px
+    %% Node Definitions
+    A["AI from Google: Empowering the Engineering Lifecycle<br>GenAI as an Enabler for Engineering Teams"]
+    B[("Vertex AI Platform<br>(Foundation Models, Tools, APIs)")]
 
-    %% Define Top-Level Nodes
-    GenAI_Enabler["GenAI as an Enabler for Engineering Teams"]
-    VertexAI[("Vertex AI Platform<br>(Foundation Models, Tools, APIs)")]
-
-    %% Subgraph: Key Tools
     subgraph Key Google GenAI Tools
-        GeminiCLI["Gemini CLI<br>(Terminal Agent)"]
-        GeminiCodeAssist["Gemini Code Assist<br>(IDE & Cloud Console Integration)"]
+        C["Gemini CLI<br>(Terminal Agent)"]
+        D["Gemini Code Assist<br>(IDE & Cloud Console Integration)"]
     end
 
-    %% Subgraph: Lifecycle Domains
     subgraph Engineering Lifecycle Domains
-        IncidentResponse["Incident Response<br>(Analysis, Root Cause)"]
-        Modernization["Modernization<br>(Legacy Transformation)"]
-        Documentation["Documentation<br>(Creation, Summarization)"]
-        Testing["Testing<br>(Test Gen, Debugging)"]
-        Coding["Coding<br>(Generation, Completion, Refactoring)"]
+        E["Incident Response<br>(Analysis, Root Cause)"]
+        F["Modernization<br>(Legacy Transformation)"]
+        G["Documentation<br>(Creation, Summarization)"]
+        H["Testing<br>(Test Gen, Debugging)"]
+        I["Coding<br>(Generation, Completion, Refactoring)"]
     end
 
-    %% Subgraph: Key Benefits
     subgraph Key Benefits
-        Benefit1["Developer Productivity Boost"]
-        Benefit2["Faster Development Cycles"]
-        Benefit3["Enhanced Operational Efficiency"]
-        Benefit4["Reduced Technical Debt"]
+        J["Developer Productivity Boost"]
+        K["Faster Development Cycles"]
+        L["Enhanced Operational Efficiency"]
+        M["Reduced Technical Debt"]
     end
 
-    %% Apply Styles
-    class GenAI_Enabler gray
-    class IncidentResponse,Modernization,Documentation,Testing,Coding gray
-    class GeminiCLI,GeminiCodeAssist blue
-    class Benefit1,Benefit2,Benefit3,Benefit4 benefits
+    %% Connections
+    B --> A
+    B -. "Utilizes" .-> C
+    B -. "Powers" .-> D
+    B -- "Foundation for<br>Migration Tools" --> F
+    B -- "Custom AI Models for<br>Monitoring & Alerting" --> E
+    B -.-> J
+    B -.-> K
+    B -.-> L
+    B -.-> M
 
-    %% Define Connections
-    
-    %% Vertex AI Connections
-    VertexAI --> GenAI_Enabler
-    VertexAI -. "Utilities" .-> GeminiCLI
-    VertexAI -. "Powers" .-> GeminiCodeAssist
-    VertexAI -- "Foundation for<br>Migration Tools" --> Modernization
-    VertexAI -- "Custom AI Models for<br>Monitoring & Alerting" --> IncidentResponse
-    VertexAI -.-> Benefit1
-    VertexAI -.-> Benefit2
-    VertexAI -.-> Benefit3
-    VertexAI -.-> Benefit4
+    A --> E
+    A --> F
+    A --> G
+    A --> H
+    A --> I
 
-    %% GenAI Enabler Connections
-    GenAI_Enabler --> IncidentResponse
-    GenAI_Enabler --> Modernization
-    GenAI_Enabler --> Documentation
-    GenAI_Enabler --> Testing
-    GenAI_Enabler --> Coding
+    C -- "Draft documentation" --> G
+    C -- "Generate test scripts" --> H
+    C -- "Terminal-based code tasks" --> I
 
-    %% Gemini CLI Connections
-    GeminiCLI -- "Draft documentation" --> Documentation
-    GeminiCLI -- "Generate test scripts" --> Testing
-    GeminiCLI -- "Terminal-based code tasks" --> Coding
+    D -- "Analyze logs & troubleshoot" --> E
+    D -- "Provide insights in console" --> E
+    D -- "Automate code refactoring" --> F
+    D -- "Generate docs from code" --> G
+    D -- "Automate test scripts" --> H
+    D -- "Generate test scaffolds" --> H
+    D -- "In-IDE code assistance" --> I
+    D -.-> J
+    D -.-> K
+    D -.-> L
+    D -.-> M
 
-    %% Gemini Code Assist Connections
-    GeminiCodeAssist -- "Analyze logs & troubleshoot" --> IncidentResponse
-    GeminiCodeAssist -- "Provide insights in console" --> IncidentResponse
-    GeminiCodeAssist -- "Automate code refactoring" --> Modernization
-    GeminiCodeAssist -- "Generate docs from code" --> Documentation
-    GeminiCodeAssist -- "Automate test scripts" --> Testing
-    GeminiCodeAssist -- "Generate test scaffolds" --> Testing
-    GeminiCodeAssist -- "In-IDE code assistance" --> Coding
-    GeminiCodeAssist -.-> Benefit1
-    GeminiCodeAssist -.-> Benefit2
-    GeminiCodeAssist -.-> Benefit3
-    GeminiCodeAssist -.-> Benefit4
+    %% Styling (Approximation of the original)
+    classDef gray_box fill:#f4f4f4,stroke:#aaa,stroke-width:2px,rx:5px,ry:5px;
+    classDef blue_box fill:#e6f0ff,stroke:#b0c4de,stroke-width:2px,rx:5px,ry:5px;
+    classDef dashed_box fill:#f9f9f9,stroke:#ccc,stroke-dasharray: 3 3,stroke-width:2px,rx:5px,ry:5px;
+
+    class A gray_box
+    class E,F,G,H,I gray_box
+    class C,D blue_box
+    class J,K,L,M dashed_box
+
+    linkStyle 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32 stroke:#555,stroke-width:1px;
+    linkStyle 1,2,5,6,7,8,28,29,30,31 stroke-dasharray: 5 5;
